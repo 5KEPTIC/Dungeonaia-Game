@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dungeon"
+version = "0.1.0"
+description = "An offline-first terminal dungeon game"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "textual",
+    "httpx",
+    "pyfiglet",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[project.scripts]
+dungeon = "dungeon.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"

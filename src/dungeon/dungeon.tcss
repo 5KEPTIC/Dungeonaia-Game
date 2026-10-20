@@ -1,0 +1,215 @@
+Screen {
+    background: $background;
+    color: $foreground;
+}
+
+Header {
+    background: #171b20;
+    color: $accent;
+    text-style: bold;
+}
+
+Footer {
+    background: #171b20;
+}
+
+#title-screen {
+    align: center middle;
+    height: 1fr;
+}
+
+#title-art {
+    color: $accent;
+    text-align: center;
+    margin: 1 0 2 0;
+    height: auto;
+}
+
+#title-screen Button {
+    width: 24;
+    margin: 1;
+}
+
+#help-text {
+    color: $warning;
+    width: 50;
+    height: 3;
+    text-align: center;
+}
+
+#game-screen {
+    height: 1fr;
+}
+
+#main-row {
+    height: 1fr;
+    padding: 1 2;
+}
+
+DungeonMap {
+    width: 1fr;
+    height: 1fr;
+    border: round $primary;
+    background: #0e1216;
+    color: $foreground;
+    content-align: center middle;
+    overflow: hidden;
+    padding: 1;
+    border-title-color: $accent;
+    border-title-background: #0e1216;
+    border-title-style: bold;
+}
+
+#sidebar {
+    width: 29;
+    height: 1fr;
+    padding-left: 1;
+}
+
+#hero-panel,
+#nearby-panel,
+#inventory-panel,
+#minimap-panel,
+#messages {
+    border: round #4b5965;
+    background: $panel;
+    padding: 1;
+    border-title-color: $accent;
+    border-title-background: $panel;
+    border-title-style: bold;
+}
+
+#hero-panel {
+    height: 11;
+}
+
+#hero-name {
+    color: $accent;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#hp-label,
+#floor,
+#turn,
+#score,
+#high-score {
+    color: $foreground;
+    height: 1;
+}
+
+#hp-bar {
+    margin: 0 0 1 0;
+}
+
+#hp-bar.hp-good .bar--complete {
+    color: $success;
+}
+
+#hp-bar.hp-warning .bar--complete {
+    color: $warning;
+}
+
+#hp-bar.hp-danger .bar--complete {
+    color: $error;
+}
+
+#nearby-panel {
+    height: 8;
+}
+
+#inventory-panel {
+    height: 5;
+}
+
+#minimap-panel {
+    height: 1fr;
+}
+
+#messages {
+    height: 7;
+    margin: 0 2;
+    overflow-y: scroll;
+}
+
+#game-over {
+    dock: top;
+    width: 100%;
+    height: 1;
+    text-align: center;
+    color: $error;
+    text-style: bold;
+}
+
+.damage-flash {
+    border: round $error;
+    border-title-color: $error;
+}
+
+HelpScreen {
+    align: center middle;
+}
+
+GameOverScreen {
+    align: center middle;
+}
+
+#help-dialog {
+    width: 48;
+    height: 18;
+    padding: 2 4;
+    border: round $accent;
+    background: $panel;
+}
+
+#help-title {
+    color: $accent;
+    text-align: center;
+    text-style: bold;
+    margin-bottom: 1;
+}
+
+#help-controls {
+    color: $foreground;
+    height: 1fr;
+}
+
+#close-help {
+    width: 16;
+    min-width: 16;
+    margin: 1 0 0 0;
+    align-horizontal: center;
+}
+
+#floor-transition {
+    display: none;
+    dock: top;
+    width: 100%;
+    height: 1fr;
+    content-align: center middle;
+    background: #000000;
+    color: $accent;
+    text-style: bold;
+    layer: overlay;
+}
+
+#game-over-dialog {
+    width: 46;
+    height: 18;
+    padding: 2 4;
+    border: round $error;
+    background: $panel;
+    align: center middle;
+}
+
+#death-banner {
+    color: $error;
+    text-align: center;
+    text-style: bold;
+    margin-bottom: 2;
+}
+
+#death-stats {
+    color: $foreground;
+    text-align: center;
+}
