@@ -9,6 +9,7 @@ import random
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from .ai import OllamaClient
     from .bots import Brain
 
 WIDTH, HEIGHT, FOV_RADIUS = 60, 25, 8
@@ -189,7 +190,11 @@ def _spawn_items(
     }
 
 
-def new_game(seed: int | None = None, ai_enabled: bool = False, ai_client: object | None = None) -> GameState:
+def new_game(
+    seed: int | None = None,
+    ai_enabled: bool = False,
+    ai_client: OllamaClient | None = None,
+) -> GameState:
     """Create a new offline game with rule based enemy brains."""
     dungeon_map, start = generate_map(seed)
     from .bots import RuleBot
