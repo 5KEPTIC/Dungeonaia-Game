@@ -4,8 +4,11 @@ import asyncio
 import os
 import sys
 import time
+from collections.abc import Callable
 from dataclasses import dataclass
+from importlib import import_module
 from math import hypot
+from typing import cast
 
 from textual.app import App, ComposeResult
 from textual.binding import Binding
@@ -19,12 +22,18 @@ from .game import GameState, Position, Tile, move_player, new_game
 from .rendering import wall_glyph
 from .scores import load_high_score, save_high_score
 
+def _plain_figlet_format(text: str, font: str = "slant") -> str:
+    """Provide a readable title when the optional logo dependency is absent."""
+    del font
+    return text
+
+
 try:
-    from pyfiglet import figlet_format
+    _pyfiglet = import_module("pyfiglet")
 except ImportError:  # Keep the offline UI usable before dependencies are installed.
-    def figlet_format(text: str, font: str = "slant") -> str:
-        del font
-        return text
+    figlet_format: Callable[..., str] = _plain_figlet_format
+else:
+    figlet_format = cast(Callable[..., str], getattr(_pyfiglet, "figlet_format"))
 
 
 DUNGEON_THEME = Theme(
@@ -97,7 +106,8 @@ class GameOverScreen(ModalScreen[None]):
     BINDINGS = [Binding("r", "restart", "Restart"), Binding("escape", "close", "Close", show=False)]
 
     def compose(self) -> ComposeResult:
-        state = self.app.state
+        app = cast(DungeonApp, self.app)
+        state = app.state
         with Vertical(id="game-over-dialog"):
             yield Static("YOU DIED", id="death-banner")
             yield Static(
@@ -110,7 +120,7 @@ class GameOverScreen(ModalScreen[None]):
             )
 
     def action_restart(self) -> None:
-        self.app.restart_game()
+        cast(DungeonApp, self.app).restart_game()
 
     def action_close(self) -> None:
         self.dismiss(None)

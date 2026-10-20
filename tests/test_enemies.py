@@ -1,4 +1,4 @@
-import random
+`import random
 
 from dungeon.bots import RuleBot
 from dungeon.game import Action, Enemy, Position, Tile, astar_path, legal_actions, legal_moves, move_player, new_game
